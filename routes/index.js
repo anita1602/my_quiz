@@ -90,11 +90,19 @@ router.get('/users/:userId(\\d+)/quizzes', quizController.index);     // ver las
 
 // Definición de rutas de /quizzes
 
-router.get('/quizzes', quizController.index);
-router.get('/quizzes/:quizId(\\d+)', quizController.show);
-router.get('/quizzes/new', sessionController.loginRequired, quizController.new);
-router.post('/quizzes', sessionController.loginRequired, quizController.create);
-router.get('/quizzes/:quizId(\\d+)/edit', sessionController.loginRequired, quizController.adminOrAuthorRequired, quizController.edit);
+router.get('/quizzes',
+    quizController.index);
+router.get('/quizzes/:quizId(\\d+)',
+    quizController.show);
+router.get('/quizzes/new', 
+    sessionController.loginRequired, 
+    quizController.new);
+router.post('/quizzes', 
+    sessionController.loginRequired, 
+    quizController.create);
+router.get('/quizzes/:quizId(\\d+)/edit', 
+    sessionController.loginRequired, quizController.adminOrAuthorRequired, 
+    quizController.edit);
 router.put('/quizzes/:quizId(\\d+)',
     sessionController.loginRequired,
     quizController.adminOrAuthorRequired,
