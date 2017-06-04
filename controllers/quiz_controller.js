@@ -272,6 +272,7 @@ exports.randomcheck = function (req, res, next) {
 	req.session.score++;
    }else{
 	req.session.score=0;
+	req.session.question=[-1];
    }
    res.render('quizzes/random_result', {
 	score: req.session.score,
