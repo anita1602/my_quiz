@@ -8,7 +8,7 @@ exports.load = function (req, res, next, quizId) {
 
     models.Quiz.findById(quizId, {
         include: [
-            models.Tip,
+            {model: models.Tip, include: [{model: models.User, as: 'Author'}]},
             {model: models.User, as: 'Author'}
         ]
     })
@@ -272,7 +272,7 @@ exports.randomcheck = function (req, res, next) {
 	req.session.score++;
    }else{
 	req.session.score=0;
-	req.session.question=[-1];
+	req.session.questions=[-1];
    }
    res.render('quizzes/random_result', {
 	score: req.session.score,
